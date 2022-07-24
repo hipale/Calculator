@@ -1,12 +1,17 @@
+* {
+ box-sizing: border-box;
+}
 body {
     background-color: black;
+    width: 1000px;
+    height: 100px;  
 }
 #numCont {
+    width: 50%;
     display: flex;
     flex-direction: row-reverse;
 flex-wrap: wrap;
 font-size: 50px;
-height: 50px;
 }
 #screen {
     background-color: darkgrey;
@@ -20,4 +25,22 @@ height: 50px;
     width: 100%;
     height: 75px;
     background-color: dimgrey;
+}
+button {
+width: 25%;
+height: 1fr;
+border: 3px solid black;
+font-weight: bold;
+font-size: 50px;
+}
+#allCont {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+#propertiesCont {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    flex-wrap: wrap;
 }
