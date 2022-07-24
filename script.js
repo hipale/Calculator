@@ -1,22 +1,35 @@
 let scr = document.querySelector("#screen");
+let a;
+let sum = 0;
+scr.innerHTML = "";
 let bottomScr = document.querySelector("#bottomScreen");
 const tile = document.querySelectorAll(".tile");
-const property = document.querySelectorAll(".propertie");
 for (let i = 0; i < tile.length; i++) {
     tile[i].addEventListener("click", addNum);
 }
 
-function addNum(e) {
-scr.innerHTML = scr.innerHTML + e.target.innerHTML;
-
+function addNum(e) { 
+scr.innerHTML += e.target.innerHTML;
 }
-for (let i = 0; i < property.length; i++) {
-    property[i].addEventListener("click", eventMake);
+function add() {
+a = " + ";
+scr.innerHTML += " + "
 }
-function eventMake(e) {
-    if (e.target.innerHTML == "+") {
-        bottomScr.innerHTML = bottomScr.innerHTML + scr.innerHTML;
-        scr.innerHTML = "";   
-        console.log("e");
+function sub() {
+a = " - "
+scr.innerHTML += " - "
+}
+function operate() {
+  let numCount = scr.innerHTML.split(a);
+if (a == " + ") {
+    for(let i = 0; i < numCount.length; i++) {
+        sum += parseInt(numCount[i]);
     }
+} else if (a == " - ") {
+sum = numCount[0] - numCount[1];
+}
+ 
+ console.log(sum);
+ bottomScr.innerHTML = sum;
+ scr.innerHTML = "";
 }
