@@ -11,37 +11,27 @@ for (let i = 0; i < tile.length; i++) {
     tile[i].addEventListener("click", addNum);
 }
 
-function addNum(e) { 
+function addNum(e) {
     scr.innerHTML += e.target.innerHTML;
     numCount = scr.innerHTML.split(a);
 }
 for (let i = 0; i < prop.length; i++) {
     prop[i].addEventListener("click", operate);
-    }
-function add() {
-    for (let i = 0; i < numCount.length; i++) {
-        sum += parseInt(numCount[i]);
-    }
-bottomScr.innerHTML = sum;
 }
-
+function add() {
+    sum = parseInt(numCount[0]) + parseInt(numCount[1]);
+}
 function sub() {
-    for (let i = 0; i < numCount.length; i++) {
-        sum = parseInt(numCount[0])- parseInt(numCount[1]);
-    }
-bottomScr.innerHTML = sum;
+    sum = parseInt(numCount[0]) - parseInt(numCount[1]);
 }
 function multi() {
-        sum = parseInt(numCount[0]) * parseInt(numCount[1]);
-bottomScr.innerHTML = sum;
+     sum = parseInt(numCount[0]) * parseInt(numCount[1]);
 }
-function divi() { 
+function divi() {
     sum = parseInt(numCount[0]) / parseInt(numCount[1]);
-    bottomScr.innerHTML = sum;
 }
-function mod () {
+function mod() {
     sum = parseInt(numCount[0]) % parseInt(numCount[1]);
-    bottomScr.innerHTML = sum;
 }
 function operate(e) {
     if (scr.innerHTML !== "" && e.target.innerHTML !== "=") {
@@ -50,22 +40,26 @@ function operate(e) {
     } else {
         scr.innerHTML = "";
     }
-  if(e.target.innerHTML == "=") { 
-    console.log(a);
-if (a == "+") {
-    add()
-    }
- else if (a == "-") {
-sub()
-}  else if (a == "*") {
-    multi()
-} else if (a == ":") {
-    divi()
-} else if (a == "%") {
-    mod()
+
+        if (a == "+") {
+            add()
+        }
+        else if (a == "-") {
+            sub()
+        } else if (a == "*") {
+            multi()
+        } else if (a == ":") {
+            divi()
+        } else if (a == "%") {
+            mod()
+        }
+
+        if(e.target.innerHTML == "=") {
+            scr.innerHTML = sum;
+            bottomScr.innerHTML = `${numCount[0]} ${a} ${numCount[1]}`;
+        }
 }
-}
-}
-clear.addEventListener("click", function() { bottomScr.innerHTML = "";
-scr.innerHTML = "";
+clear.addEventListener("click", function () {
+    bottomScr.innerHTML = "";
+    scr.innerHTML = "";
 })
