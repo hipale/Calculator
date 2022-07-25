@@ -1,6 +1,7 @@
 let scr = document.querySelector("#screen");
 let a;
 let sum = 0;
+let numCount;
 scr.innerHTML = "";
 let clear = document.querySelector("#clearButt");
 let prop = document.querySelectorAll(".prop");
@@ -11,34 +12,39 @@ for (let i = 0; i < tile.length; i++) {
 }
 
 function addNum(e) { 
-scr.innerHTML += e.target.innerHTML;
+    scr.innerHTML += e.target.innerHTML;
+    numCount = scr.innerHTML.split(a);
 }
+for (let i = 0; i < prop.length; i++) {
+    prop[i].addEventListener("click", operate);
+    }
 function add() {
     for (let i = 0; i < numCount.length; i++) {
-        return sum += numCount[i];
+        sum += parseInt(numCount[i]);
     }
 bottomScr.innerHTML = sum;
 }
 
 function sub() {
-a = " - ";
-scr.innerHTML += " - ";
+    for (let i = 0; i < numCount.length; i++) {
+        sum = parseInt(numCount[0])- parseInt(numCount[1]);
+    }
+bottomScr.innerHTML = sum;
 }
 function multi() {
-    a = " * ";
-    scr.innerHTML = " * ";
+
+        sum = parseInt(numCount[0]) * parseInt(numCount[1]);
+bottomScr.innerHTML = sum;
 }
 function operate(e) {
-    if (scr.innerHTML !== "") {
+    if (scr.innerHTML !== "" && e.target.innerHTML !== "=") {
         a = e.target.innerHTML;
-        console.log(a);
         scr.innerHTML += e.target.innerHTML;
-        let numCount = scr.innerHTML.split(a);
     } else {
         scr.innerHTML = "";
     }
-
-  if(e.target.innerHTML == "=") {
+  if(e.target.innerHTML == "=") { 
+    console.log(a);
 if (a == "+") {
     add()
     }
@@ -47,8 +53,6 @@ sub()
 }  else if (a == "*") {
     multi()
 }
- bottomScr.innerHTML = sum;
- scr.innerHTML = "";
 }
 }
 clear.addEventListener("click", function() { bottomScr.innerHTML = "";
