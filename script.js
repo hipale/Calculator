@@ -32,9 +32,16 @@ function sub() {
 bottomScr.innerHTML = sum;
 }
 function multi() {
-
         sum = parseInt(numCount[0]) * parseInt(numCount[1]);
 bottomScr.innerHTML = sum;
+}
+function divi() { 
+    sum = parseInt(numCount[0]) / parseInt(numCount[1]);
+    bottomScr.innerHTML = sum;
+}
+function mod () {
+    sum = parseInt(numCount[0]) % parseInt(numCount[1]);
+    bottomScr.innerHTML = sum;
 }
 function operate(e) {
     if (scr.innerHTML !== "" && e.target.innerHTML !== "=") {
@@ -52,6 +59,10 @@ if (a == "+") {
 sub()
 }  else if (a == "*") {
     multi()
+} else if (a == ":") {
+    divi()
+} else if (a == "%") {
+    mod()
 }
 }
 }
