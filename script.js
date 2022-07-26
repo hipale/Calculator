@@ -57,13 +57,15 @@ clear.addEventListener("click", function () {
     bottomScr.innerHTML = "";
     scr.innerHTML = "";
 })
-
-
-
 reverseButt.addEventListener("click", function () {
     const arrayPos = numCount.length - 1;
-  numCount[numCount.length - 1] *= -1;
+  numCount[arrayPos] *= -1;
 console.log(numCount);
+if (arrayPos == 0) {
+    scr.innerHTML = `${numCount[0]}`;
+} else if(arrayPos == 1) {
+scr.innerHTML = `${numCount[0]}${a}${numCount[1]}`;
+}
 });
 
 function choseMethod() {
