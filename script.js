@@ -30,9 +30,10 @@ function multi() {
 }
 function divi() {
     sum = parseInt(numCount[0]) / parseInt(numCount[1]);
+    sum = sum.toFixed(2);
 }
 function mod() {
-    sum = parseInt(numCount[0]) % parseInt(numCount[1]);
+    sum = parseInt(numCount[0]) % parseInt(numCount[1]); 
 }
 function operate(e) {
     if (scr.innerHTML !== "" && e.target.innerHTML != "=") {
@@ -42,22 +43,14 @@ function operate(e) {
     } else {
         scr.innerHTML = "";
     }
-        if (a == "+") {
-            add()
-        }
-        else if (a == "-") {
-            sub()
-        } else if (a == "*") {
-            multi()
-        } else if (a == ":") {
-            divi()
-        } else if (a == "%") {
-            mod()
-        }
+    choseMethod()
         if(e.target.innerHTML == "=" || y > 1) {
             scr.innerHTML = sum;
             bottomScr.innerHTML = `${numCount[0]} ${a} ${numCount[1]}`;
             y = 0;
+            if(e.target.innerHTML != "=") {
+            scr.innerHTML +=e.target.innerHTML;
+            }
         }
 }
 clear.addEventListener("click", function () {
@@ -68,9 +61,22 @@ clear.addEventListener("click", function () {
 
 
 reverseButt.addEventListener("click", function () {
-numCount[numCount.length - 1] = numCount[numCount.length - 1] * -1;
+    const arrayPos = numCount.length - 1;
+  numCount[numCount.length - 1] *= -1;
 console.log(numCount);
-let sliced = numCount.slice(numCount.length - 1)
-numCount.push(numCount[numCount.length - 1]);
-scr.innerHTML = 
 });
+
+function choseMethod() {
+    if (a == "+") {
+        add()
+    }
+    else if (a == "-") {
+        sub()
+    } else if (a == "*") {
+        multi()
+    } else if (a == ":") {
+        divi()
+    } else if (a == "%") {
+        mod()
+    }
+}
