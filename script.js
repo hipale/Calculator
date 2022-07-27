@@ -36,22 +36,27 @@ function mod() {
     sum = parseInt(numCount[0]) % parseInt(numCount[1]); 
 }
 function operate(e) {
-    if (scr.innerHTML !== "" && e.target.innerHTML != "=") {
+    if (scr.innerHTML !== "" && e.target.innerHTML != "=" && y < 1) {
         a = e.target.innerHTML;
         scr.innerHTML += e.target.innerHTML;
-        y++;
-    } else {
+        
+    } else if(y < 1) {
         scr.innerHTML = "";
     }
+    console.log(y);
     choseMethod()
-        if(e.target.innerHTML == "=" || y > 1) {
+    if(e.target.innerHTML == "=" || y > 1) {
             scr.innerHTML = sum;
             bottomScr.innerHTML = `${numCount[0]} ${a} ${numCount[1]}`;
+            console.log(a);
+            console.log(y);
             y = 0;
             if(e.target.innerHTML != "=") {
-            scr.innerHTML +=e.target.innerHTML;
-            }
+            scr.innerHTML +=e.target.innerHTML;  
+            a = e.target.innerHTML;  
+            }  
         }
+        y +=2;
 }
 clear.addEventListener("click", function () {
     bottomScr.innerHTML = "";
