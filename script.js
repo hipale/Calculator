@@ -9,47 +9,53 @@ let prop = document.querySelectorAll(".prop");
 let bottomScr = document.querySelector("#bottomScreen");
 let reverseButt = document.querySelector("#reverseNum");
 const tile = document.querySelectorAll(".tile");
+let dot = document.querySelector("#dot");
 for (let i = 0; i < tile.length; i++) {
     tile[i].addEventListener("click", addNum);
 }
 function addNum(e) {
     scr.innerHTML += e.target.innerHTML;
-    numCount = scr.innerHTML.split(a);
+    numCount = scr.innerHTML.split(a); 
+    fraction()
+//splitting array, for using it during equations
 }
 for (let i = 0; i < prop.length; i++) {
     prop[i].addEventListener("click", operate);
 }
 function add() {
-    sum = parseInt(numCount[0]) + parseInt(numCount[1]);
+    sum = parseFloat(numCount[0]) + parseFloat(numCount[1]);
 }
 function sub() {
-    sum = parseInt(numCount[0]) - parseInt(numCount[1]);
+    sum = parseFloat(numCount[0]) - parseFloat(numCount[1]);
 }
 function multi() {
-    sum = parseInt(numCount[0]) * parseInt(numCount[1]);
+    sum = parseFloat(numCount[0]) * parseFloat(numCount[1]);
 }
 function divi() {
-    sum = parseInt(numCount[0]) / parseInt(numCount[1]);
+    sum = parseFloat(numCount[0]) / parseFloat(numCount[1]);
     sum = sum.toFixed(2);
 }
 function mod() {
-    sum = parseInt(numCount[0]) % parseInt(numCount[1]); 
+    sum = parseFloat(numCount[0]) % parseFloat(numCount[1]); 
 }
 function operate(e) {
     if (scr.innerHTML !== "" && e.target.innerHTML != "=" && y < 1) {
         a = e.target.innerHTML;
-        scr.innerHTML += e.target.innerHTML;
-        
+        scr.innerHTML += e.target.innerHTML;      
     } else if(y < 1) {
         scr.innerHTML = "";
     }
-    console.log(y);
     choseMethod()
+    
     if(e.target.innerHTML == "=" || y > 1) {
+        if(sum !=0) {
             scr.innerHTML = sum;
             bottomScr.innerHTML = `${numCount[0]} ${a} ${numCount[1]}`;
-            console.log(a);
-            console.log(y);
+        } else {
+        numCount[1] = 0;
+            scr.innerHTML = numCount[0];
+            bottomScr.innerHTML = numCount[0];
+        }
             y = 0;
             if(e.target.innerHTML != "=") {
             scr.innerHTML +=e.target.innerHTML;  
@@ -61,11 +67,11 @@ function operate(e) {
 clear.addEventListener("click", function () {
     bottomScr.innerHTML = "";
     scr.innerHTML = "";
-})
+});
 reverseButt.addEventListener("click", function () {
     const arrayPos = numCount.length - 1;
   numCount[arrayPos] *= -1;
-console.log(numCount);
+
 if (arrayPos == 0) {
     scr.innerHTML = `${numCount[0]}`;
 } else if(arrayPos == 1) {
@@ -86,4 +92,12 @@ function choseMethod() {
     } else if (a == "%") {
         mod()
     }
-}
+};
+dot.addEventListener("click", fraction)
+function fraction() {
+    const arrayPos = numCount.length - 1;
+    for(let i = 0; i < arrayPos.length; i++) {
+if(arrayPos[i] == ".") 
+dot.removeEventListener("click", fraction);
+    }
+};

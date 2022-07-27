@@ -55,6 +55,7 @@ button {
 
 #clearButt {
     background-color: rgb(170, 111, 2);
+    width: 380px;
 }
 
 .tile {
@@ -65,8 +66,4 @@ button {
 .prop,
 #reverseNum {
     background-color: oldlace;
-}
-
-#clearButt {
-    width: 266px;
 }
