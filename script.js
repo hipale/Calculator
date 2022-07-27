@@ -48,14 +48,7 @@ function operate(e) {
     choseMethod()
     
     if(e.target.innerHTML == "=" || y > 1) {
-        if(sum !=0) {
-            scr.innerHTML = sum;
-            bottomScr.innerHTML = `${numCount[0]} ${a} ${numCount[1]}`;
-        } else {
-        numCount[1] = 0;
-            scr.innerHTML = numCount[0];
-            bottomScr.innerHTML = numCount[0];
-        }
+        setResult()
             y = 0;
             if(e.target.innerHTML != "=") {
             scr.innerHTML +=e.target.innerHTML;  
@@ -67,6 +60,7 @@ function operate(e) {
 clear.addEventListener("click", function () {
     bottomScr.innerHTML = "";
     scr.innerHTML = "";
+    y = 0;
 });
 reverseButt.addEventListener("click", function () {
     const arrayPos = numCount.length - 1;
@@ -101,3 +95,18 @@ if(arrayPos[i] == ".")
 dot.removeEventListener("click", fraction);
     }
 };
+function setResult() {
+    if(numCount.length == 1) {
+        numCount.push(0);
+
+    }
+
+    if(sum !=0) {
+        scr.innerHTML = sum;
+        bottomScr.innerHTML = `${numCount[0]} ${a} ${numCount[1]}`;
+    } else {
+        scr.innerHTML = numCount[0];
+        bottomScr.innerHTML = numCount[0];
+    }
+}
+    
