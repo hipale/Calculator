@@ -10,6 +10,10 @@ let bottomScr = document.querySelector("#bottomScreen");
 let reverseButt = document.querySelector("#reverseNum");
 const tile = document.querySelectorAll(".tile");
 let dot = document.querySelector("#dot");
+let pi = document.querySelector("#pi");
+pi.addEventListener("click", function() {
+    scr.innerHTML += 3.14;
+});
 for (let i = 0; i < tile.length; i++) {
     tile[i].addEventListener("click", addNum);
 }
@@ -26,7 +30,7 @@ for (let i = 0; i < prop.length; i++) {
     prop[i].addEventListener("click", operate);
 }
 function add() {
-    sum = parseFloat(numCount[0]) + parseFloat(numCount[1]);
+    sum = (parseFloat(numCount[0]) + parseFloat(numCount[1])).toFixed(1);
 }
 function sub() {
     sum = parseFloat(numCount[0]) - parseFloat(numCount[1]);
@@ -58,6 +62,7 @@ function operate(e) {
     }
     if (e.target.innerHTML == "=" || y > 1) {
         setResult()
+        sum = Math.round(sum).toFixed(1);
         y = 0;
         if (e.target.innerHTML != "=") {
             scr.innerHTML += e.target.innerHTML;

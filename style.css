@@ -10,7 +10,7 @@ body {
 }
 
 #numCont {
-    width: 75%;
+    width: 399px;
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
@@ -34,7 +34,7 @@ body {
 
 button {
     width: 133px;
-    height: 1fr;
+    height: 75px;
     border: 3px solid black;
     font-weight: bold;
     font-size: 50px;
@@ -42,8 +42,9 @@ button {
 
 #allCont {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: flex-end;
+    background-color: white;
 }
 
 #propertiesCont {
@@ -55,7 +56,7 @@ button {
 
 #clearButt {
     background-color: rgb(170, 111, 2);
-    width: 380px;
+    width: 399px;
 }
 
 .tile {
@@ -66,4 +67,18 @@ button {
 .prop,
 #reverseNum {
     background-color: oldlace;
+}
+#strCont{
+    display: flex;
+    flex-direction:column;
+}
+#propCont {
+    display: flex;
+}
+#equ {
+    height: 150px;
+    background-color: rgb(75, 75, 110);
+}
+#pi {
+    height: 150px;
 }
