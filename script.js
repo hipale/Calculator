@@ -14,10 +14,12 @@ for (let i = 0; i < tile.length; i++) {
     tile[i].addEventListener("click", addNum);
 }
 function addNum(e) {
+    if(scr.innerHTML == "") {
+        dot.addEventListener("click", fraction);
+    }
     scr.innerHTML += e.target.innerHTML;
-    numCount = scr.innerHTML.split(a); 
-    fraction()
-//splitting array, for using it during equations
+    numCount = scr.innerHTML.split(a);
+    //splitting array, for using it during equations
 }
 for (let i = 0; i < prop.length; i++) {
     prop[i].addEventListener("click", operate);
@@ -36,26 +38,27 @@ function divi() {
     sum = sum.toFixed(2);
 }
 function mod() {
-    sum = parseFloat(numCount[0]) % parseFloat(numCount[1]); 
+    sum = parseFloat(numCount[0]) % parseFloat(numCount[1]);
 }
 function operate(e) {
+    //button cannot be clicked if screen is empty
     if (scr.innerHTML !== "" && e.target.innerHTML != "=" && y < 1) {
         a = e.target.innerHTML;
-        scr.innerHTML += e.target.innerHTML;      
-    } else if(y < 1) {
+        scr.innerHTML += e.target.innerHTML;
+    } else if (y < 1) {
         scr.innerHTML = "";
     }
     choseMethod()
-    
-    if(e.target.innerHTML == "=" || y > 1) {
+    if (e.target.innerHTML == "=" || y > 1) {
         setResult()
-            y = 0;
-            if(e.target.innerHTML != "=") {
-            scr.innerHTML +=e.target.innerHTML;  
-            a = e.target.innerHTML;  
-            }  
+        y = 0;
+        if (e.target.innerHTML != "=") {
+            scr.innerHTML += e.target.innerHTML;
+            a = e.target.innerHTML;
         }
-        y +=2;
+    }
+    y += 2;
+    dot.addEventListener("click", fraction);
 }
 clear.addEventListener("click", function () {
     bottomScr.innerHTML = "";
@@ -64,13 +67,13 @@ clear.addEventListener("click", function () {
 });
 reverseButt.addEventListener("click", function () {
     const arrayPos = numCount.length - 1;
-  numCount[arrayPos] *= -1;
+    numCount[arrayPos] *= -1;
 
-if (arrayPos == 0) {
-    scr.innerHTML = `${numCount[0]}`;
-} else if(arrayPos == 1) {
-scr.innerHTML = `${numCount[0]}${a}${numCount[1]}`;
-}
+    if (arrayPos == 0) {
+        scr.innerHTML = `${numCount[0]}`;
+    } else if (arrayPos == 1) {
+        scr.innerHTML = `${numCount[0]}${a}${numCount[1]}`;
+    }
 });
 
 function choseMethod() {
@@ -87,26 +90,22 @@ function choseMethod() {
         mod()
     }
 };
-dot.addEventListener("click", fraction)
-function fraction() {
-    const arrayPos = numCount.length - 1;
-    for(let i = 0; i < arrayPos.length; i++) {
-if(arrayPos[i] == ".") 
-dot.removeEventListener("click", fraction);
-    }
+
+function fraction(e) {
+    scr.innerHTML += ".";
+ dot.removeEventListener("click", fraction); 
 };
 function setResult() {
-    if(numCount.length == 1) {
+    if (numCount.length == 1) {
         numCount.push(0);
-
     }
 
-    if(sum !=0) {
+    if (sum != 0) {
         scr.innerHTML = sum;
         bottomScr.innerHTML = `${numCount[0]} ${a} ${numCount[1]}`;
     } else {
         scr.innerHTML = numCount[0];
         bottomScr.innerHTML = numCount[0];
+        a;
     }
 }
-    
