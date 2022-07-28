@@ -14,7 +14,8 @@ for (let i = 0; i < tile.length; i++) {
     tile[i].addEventListener("click", addNum);
 }
 function addNum(e) {
-    if(scr.innerHTML == "") {
+    let arrayPos = numCount.length - 1;
+    if(numCount[arrayPos] == "") {
         dot.addEventListener("click", fraction);
     }
     scr.innerHTML += e.target.innerHTML;
@@ -58,7 +59,6 @@ function operate(e) {
         }
     }
     y += 2;
-    dot.addEventListener("click", fraction);
 }
 clear.addEventListener("click", function () {
     bottomScr.innerHTML = "";
