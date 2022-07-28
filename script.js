@@ -14,7 +14,7 @@ for (let i = 0; i < tile.length; i++) {
     tile[i].addEventListener("click", addNum);
 }
 function addNum(e) {
-    let arrayPos = numCount.length - 1;
+    const arrayPos = numCount.length - 1;
     if(numCount[arrayPos] == "") {
         dot.addEventListener("click", fraction);
     }
@@ -46,10 +46,16 @@ function operate(e) {
     if (scr.innerHTML !== "" && e.target.innerHTML != "=" && y < 1) {
         a = e.target.innerHTML;
         scr.innerHTML += e.target.innerHTML;
+        dot.addEventListener("click", fraction);
     } else if (y < 1) {
         scr.innerHTML = "";
     }
     choseMethod()
+    if (numCount.length == 1) {
+        numCount[1] = 0;
+        y++;
+        sum = numCount[0];
+    }
     if (e.target.innerHTML == "=" || y > 1) {
         setResult()
         y = 0;
@@ -97,14 +103,10 @@ function fraction(e) {
  dot.removeEventListener("click", fraction); 
 };
 function setResult() {
-    if (numCount.length == 1) {
-        scr.innerHTML = `${numCount[0]}`;
-    }
 
+  
     if (sum != 0) {
         scr.innerHTML = sum;
         bottomScr.innerHTML = `${numCount[0]} ${a} ${numCount[1]}`;
-    } else {
-        scr.innerHTML = numCount[0];
     }
 }
