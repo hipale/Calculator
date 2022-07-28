@@ -2,7 +2,7 @@ let scr = document.querySelector("#screen");
 let a;
 let y = 0;
 let sum = 0;
-let numCount;
+let numCount = [0];
 scr.innerHTML = "";
 let clear = document.querySelector("#clearButt");
 let prop = document.querySelectorAll(".prop");
@@ -71,6 +71,7 @@ reverseButt.addEventListener("click", function () {
 
     if (arrayPos == 0) {
         scr.innerHTML = `${numCount[0]}`;
+        y = 0;
     } else if (arrayPos == 1) {
         scr.innerHTML = `${numCount[0]}${a}${numCount[1]}`;
     }
@@ -97,7 +98,7 @@ function fraction(e) {
 };
 function setResult() {
     if (numCount.length == 1) {
-        numCount.push(0);
+        scr.innerHTML = `${numCount[0]}`;
     }
 
     if (sum != 0) {
@@ -105,7 +106,5 @@ function setResult() {
         bottomScr.innerHTML = `${numCount[0]} ${a} ${numCount[1]}`;
     } else {
         scr.innerHTML = numCount[0];
-        bottomScr.innerHTML = numCount[0];
-        a;
     }
 }
