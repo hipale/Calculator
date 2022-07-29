@@ -17,7 +17,7 @@ for (let i = 0; i < tile.length; i++) {
 }
 function addNum(e) {
     const arrayPos = numCount.length - 1;
-    if(numCount[arrayPos] == "" && piNum == 0) {
+    if (numCount[arrayPos] == "" && piNum == 0) {
         dot.addEventListener("click", fraction);
     }
     scr.innerHTML += e.target.innerHTML;
@@ -38,7 +38,6 @@ function multi() {
 }
 function divi() {
     sum = parseFloat(numCount[0]) / parseFloat(numCount[1]);
-    sum = sum.toFixed(2);
 }
 function mod() {
     sum = parseFloat(numCount[0]) % parseFloat(numCount[1]);
@@ -60,10 +59,10 @@ function operate(e) {
         numCount[1] = 0;
         y++;
         sum = numCount[0];
-       if(a == "") {
-        a = "+"
-       }
-    } 
+        if (a == "") {
+            a = "+"
+        }
+    }
     if (e.target.innerHTML == "=" || y > 1) {
         setResult()
         sum = Math.round(sum).toFixed(1);
@@ -111,24 +110,24 @@ function choseMethod() {
 
 function fraction(e) {
     scr.innerHTML += ".";
- dot.removeEventListener("click", fraction); 
- pi.removeEventListener("click", addPi);
- piNum = 1;
+    dot.removeEventListener("click", fraction);
+    pi.removeEventListener("click", addPi);
+    piNum = 1;
 };
 function setResult() {
     if (sum != 0) {
         scr.innerHTML = sum;
         bottomScr.innerHTML = `${numCount[0]} ${a} ${numCount[1]}`;
-    } 
+    }
 }
 pi.addEventListener("click", addPi);
- function addPi() {
-let arrayPos = numCount.length - 1;
-    if(numCount[arrayPos] == "") {
+function addPi() {
+    let arrayPos = numCount.length - 1;
+    if (numCount[arrayPos] == "") {
         scr.innerHTML += 3.14;
         pi.removeEventListener("click", addPi);
         dot.removeEventListener("click", fraction);
         piNum = 1;
         numCount[arrayPos] += 3.14;
     }
- };
+};
